@@ -4,26 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>MERCH</title>
 </head>
 <body>
-    <h1>Bienvenid@ a mi tienda!</h1>
+    
+    
 
-    <h2>Merch</h2>
+    <h1 style="margin-top: 20px; margin-left: 20px;">Merch</h1>
+
+    <h3 style="margin-top: 20px; margin-left: 20px;">Productos en Carrito: <span id="contadorCarrito">0</span></h3>
+   
+
 
     <div id="div-merch">
 
     </div>
 
-    <h2>Carrito</h2>
 
-    <h3 id="total"></h3>
+    <!-- div carrito -->
+    <h2 style="margin-top: 20px; margin-left: 20px;">Carrito</h2>
 
-    <div id="div-carrito">
+    <div id="carrito-contenedor">
+            
 
     </div>
+        <p style="margin-top: 20px; margin-left: 20px;" class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+        <button style="margin-left: 20px;" id="buy" class="boton-agregar">Comprar Carrito</button>
+        <button style="margin-left: 20px;" id="vaciar-carrito" class="boton-agregar">Vaciar Carrito</button>
 
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 </html>

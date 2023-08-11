@@ -1,0 +1,8 @@
+[
+    {"id": 1, "nombre": "Buzo Meteora", "precio": 12000, "cantidad": 1, "img": "/img/buzo1.webp"},
+    {"id": 2, "nombre": "Buzo Tour", "precio": 12000, "cantidad": 1,"img": "/img/buzo2.webp" },
+    {"id": 3, "nombre": "Remera Meteora", "precio": 5000, "cantidad": 1, "img": "/img/remera1.webp" },
+    {"id": 4, "nombre": "Remera Meteora 20 anniv", "precio": 8000, "cantidad": 1, "img": "/img/remera2.webp" },
+    {"id": 5, "nombre": "Remera Meteora 20 anniv azul", "precio": 8000, "cantidad": 1, "img": "/img/remera3.webp"},
+    {"id": 6, "nombre": "Remera Mascara de Gas", "precio": 7000, "cantidad": 1, "img": "/img/remera4.webp"}
+]
