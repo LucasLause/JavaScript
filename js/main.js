@@ -1,3 +1,57 @@
+const contadorCarrito = document.getElementById(`contadorCarrito`)
+
+const contenedorCarrito = document.getElementById(`carrito-contenedor`)
+
+const precioTotal = document.getElementById(`precioTotal`)
+
+let carrito = []
+
+const actualizarCarrito = () => {
+
+    localStorage.setItem(`carrito`, JSON.stringify(carrito))
+
+    const cartLocal = localStorage.getItem('carrito')
+    const parseCartLocal = JSON.parse(cartLocal)
+    
+    contenedorCarrito.innerHTML = ""
+
+    parseCartLocal.forEach((prod) => {
+        const div = document.createElement(`div`)
+        div.className = (`productoEnCarrito`)
+        div.innerHTML = `
+        <ul>
+            <li>${prod.nombre}</li>
+            <li>Precio: $${prod.precio}</li>
+            <div style="display: flex;flex-direction:row;">
+                <button style="margin-right: 10px;" onclick = "sumarProd(${prod.id})" class="boton-sumar"<i>+</i></button>
+                <p style="margin-right: 10px;"><span id="cantidad">${prod.cantidad}</span></p>
+                <button style="margin-right: 10px;" onclick = "restarProd(${prod.id})" class="boton-restar"<i>-</i></button>
+                <button style="margin-right: 10px;" onclick = "eliminarDelCarrito(${prod.id})" class="boton-eliminar"<i>🗑</i></button>
+            </div>
+            
+        </ul>
+        `
+
+        contenedorCarrito.appendChild(div)
+
+        localStorage.setItem(`carrito`, JSON.stringify(carrito))
+    });
+    
+    contadorCarrito.innerText = carrito.length
+    precioTotal.innerText = carrito
+    .map((item) => item.precio * item.cantidad)
+    .reduce((prev, current) => prev + current, 0);
+
+}
+
+const cartLocal = localStorage.getItem('carrito')
+const parseCartLocal = JSON.parse(cartLocal)
+
+Array.prototype.push.apply(carrito, parseCartLocal)
+
+actualizarCarrito()
+
+
 
 // Guardar producto en local
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
@@ -33,7 +87,6 @@ fetch('./products.json')
 const prods = localStorage.getItem("listaProductos")
 const parseProds = JSON.parse(prods)
 
-let carrito = []
 
 // Agregar producto al carrito
 const agregarAlCarrito = (pid) => {
@@ -52,12 +105,6 @@ const agregarAlCarrito = (pid) => {
 
     actualizarCarrito()
 }
-
-const contadorCarrito = document.getElementById(`contadorCarrito`)
-
-const contenedorCarrito = document.getElementById(`carrito-contenedor`)
-
-const precioTotal = document.getElementById(`precioTotal`)
 
 
 let total = 0
@@ -85,40 +132,6 @@ const restarProd = (prodId) => {
       actualizarCarrito();
     }
   };
-
-const actualizarCarrito = () => {
-
-    contenedorCarrito.innerHTML = ""
-
-    carrito.forEach((prod) => {
-        const div = document.createElement(`div`)
-        div.className = (`productoEnCarrito`)
-        div.innerHTML = `
-        <ul>
-            <li>${prod.nombre}</li>
-            <li>Precio: $${prod.precio}</li>
-            <div style="display: flex;flex-direction:row;">
-                <button style="margin-right: 10px;" onclick = "sumarProd(${prod.id})" class="boton-sumar"<i>+</i></button>
-                <p style="margin-right: 10px;"><span id="cantidad">${prod.cantidad}</span></p>
-                <button style="margin-right: 10px;" onclick = "restarProd(${prod.id})" class="boton-restar"<i>-</i></button>
-                <button style="margin-right: 10px;" onclick = "eliminarDelCarrito(${prod.id})" class="boton-eliminar"<i>🗑</i></button>
-            </div>
-            
-        </ul>
-        `
-
-        contenedorCarrito.appendChild(div)
-
-        localStorage.setItem(`carrito`, JSON.stringify(carrito))
-    });
-    
-    contadorCarrito.innerText = carrito.length
-    precioTotal.innerText = carrito
-    .map((item) => item.precio * item.cantidad)
-    .reduce((prev, current) => prev + current, 0);
-
-}
-
 
 
 const botonComprar = document.getElementById(`buy`)
